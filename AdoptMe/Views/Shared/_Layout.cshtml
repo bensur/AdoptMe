@@ -1,15 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <!--GoogleMaps API AIzaSyC3-A9m2-bK6oetw4cCJaB0aNPDa4MTaME-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>AdoptMe - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header>
+        <h1>AdoptMe - The place to find your new best friend!</h1>
+    </header>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,22 +25,34 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Animals", "Index", "Animals")</li>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+                <span class="nav navbar-nav navbar-right" style="font-size:30px;cursor:pointer;float:right" onclick="openNav()">&#9776;</span>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
-        @RenderBody()
+        <div id="mainContent">
+            @RenderBody()
+        </div>
+        <aside>
+            <section class="message-of-the-day">
+                <p>We love all kind of pets! Here is a picture to prove it!</p>
+                <img src="img/message-of-the-day.jpeg" />
+            </section>
+            <section class="suggestions">
+                <p>Tell us a little about yourself and we'll let you know what is the best pet for you!</p>
+            </section>
+        </aside>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - AdoptMe</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

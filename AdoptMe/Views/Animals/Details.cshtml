@@ -1,0 +1,51 @@
+﻿@model AdoptMe.Models.AnimalModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AnimalModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalBreed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalBreed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalAge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AnimalID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

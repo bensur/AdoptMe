@@ -1,0 +1,43 @@
+﻿@model AdoptMe.Models.AdoptionAgencyModel
+
+@{
+    ViewBag.Title = "Adoption-Agency Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Adoption-Agency Details</h2>
+
+<div>
+    <h4>AnimalModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdoptionAgencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdoptionAgencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdoptionAgencyLocationLat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdoptionAgencyLocationLat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdoptionAgencyLocationLng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdoptionAgencyLocationLng)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AdoptionAgencyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

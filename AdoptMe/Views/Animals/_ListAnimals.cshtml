@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AdoptMe.Models.AnimalModel>
+
+
+<section id="animals-admin-section">
+    <p>
+        @Html.ActionLink("Create New Animal", "CreateAnimal")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalBreed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalAge)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalBreed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalAge)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditAnimal", new { id = item.AnimalID }) |
+                    @Html.ActionLink("Details", "AnimalDetails", new { id = item.AnimalID }) |
+                    @Html.ActionLink("Delete", "DeleteAnimal", new { id = item.AnimalID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>

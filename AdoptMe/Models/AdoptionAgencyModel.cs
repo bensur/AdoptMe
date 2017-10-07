@@ -11,8 +11,8 @@ namespace AdoptMe.Models
         [Key]
         public int AdoptionAgencyID { get; set; }
         public string AdoptionAgencyName { get; set; }
-        public int AdoptionAgencyLocationLat { get; set; }
-        public int AdoptionAgencyLocationLng { get; set; }
+        public float AdoptionAgencyLocationLat { get; set; }
+        public float AdoptionAgencyLocationLng { get; set; }
         public virtual ICollection<AnimalModel> AdoptionAgencyAnimals { get; set; }
     }
 }

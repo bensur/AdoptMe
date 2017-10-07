@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201710061316477_Add-Animal-Agency-Name.Designer.cs">
       <DependentUpon>201710061316477_Add-Animal-Agency-Name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710070904050_Change-Agency-Location-To-Float.cs" />
+    <Compile Include="Migrations\201710070904050_Change-Agency-Location-To-Float.Designer.cs">
+      <DependentUpon>201710070904050_Change-Agency-Location-To-Float.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdoptionAgencyModel.cs" />
@@ -295,6 +299,7 @@
     <Content Include="Views\Animals\CreateAdoptionAgency.cshtml" />
     <Content Include="Views\Animals\DeleteAdoptionAgency.cshtml" />
     <Content Include="Views\Animals\AdoptionAgencyDetails.cshtml" />
+    <Content Include="Views\Animals\EditAdoptionAgency.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710061316477_Add-Animal-Agency-Name.resx">
       <DependentUpon>201710061316477_Add-Animal-Agency-Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070904050_Change-Agency-Location-To-Float.resx">
+      <DependentUpon>201710070904050_Change-Agency-Location-To-Float.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

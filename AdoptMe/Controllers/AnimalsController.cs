@@ -89,7 +89,7 @@ namespace AdoptMe.Controllers
         public ActionResult CreateAnimal([Bind(Include = "AnimalID,AnimalName,AnimalType,AnimalBreed,AnimalColor,AnimalAge,AnimalAgencyName")] AnimalModel animalModel)
         {
             if (!String.IsNullOrEmpty(animalModel.AnimalAgencyName))
-            animalModel.AnimalAdoptionAgency = db.AdoptionAgencies.FirstOrDefault(agency => agency.AdoptionAgencyName.Equals(animalModel.AnimalAgencyName));
+                animalModel.AnimalAdoptionAgency = db.AdoptionAgencies.FirstOrDefault(agency => agency.AdoptionAgencyName.Equals(animalModel.AnimalAgencyName));
             if (ModelState.IsValid)
             {
                 db.Animals.Add(animalModel);

@@ -14,6 +14,7 @@ namespace AdoptMe.Models
         public string AnimalType { get; set; }
         public string AnimalBreed { get; set; }
         public string AnimalColor { get; set; }
+        public string AnimalAgencyName { get; set; }
         public int AnimalAge { get; set; }
         //public int AdoptionAgencyID { get; set; }
         public virtual AdoptionAgencyModel AnimalAdoptionAgency { get; set; }

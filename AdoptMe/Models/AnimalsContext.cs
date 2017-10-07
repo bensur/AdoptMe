@@ -20,6 +20,6 @@ namespace AdoptMe.Models
         }
 
         public System.Data.Entity.DbSet<AdoptMe.Models.AnimalModel> Animals { get; set; }
-        public System.Data.Entity.DbSet<AdoptMe.Models.AdoptionAgencyModel> AdoptionAgencys { get; set; }
+        public System.Data.Entity.DbSet<AdoptMe.Models.AdoptionAgencyModel> AdoptionAgencies { get; set; }
     }
 }

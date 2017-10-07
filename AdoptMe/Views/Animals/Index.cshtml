@@ -1,54 +1,9 @@
-﻿@model IEnumerable<AdoptMe.Models.AnimalModel>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Admin Screen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AnimalType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnimalBreed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnimalColor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnimalAge)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnimalType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnimalBreed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnimalColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnimalAge)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnimalID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalID })
-        </td>
-    </tr>
-}
-
-</table>
+@Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals)
+@Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)

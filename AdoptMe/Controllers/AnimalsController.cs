@@ -17,10 +17,12 @@ namespace AdoptMe.Controllers
         // GET: Animals
         public ActionResult Index()
         {
-            return View(db.Animals.ToList());
+            ViewBag.AdoptionAgencies = db.AdoptionAgencies.ToList();
+            ViewBag.Animals = db.Animals.ToList();
+            return View();
         }
 
-        // POST: Animals/Search
+        // POST: Animals/SearchAnimal
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(int AnimalID, string AnimalName, string AnimalType, string AnimalBreed, string AnimalColor, string AdoptionAgencyName)
@@ -38,11 +40,13 @@ namespace AdoptMe.Controllers
                 animals = animals.Where(a => a.AnimalColor.ToLower().Contains(AnimalColor.ToLower()));
             if (!String.IsNullOrEmpty(AdoptionAgencyName))
                 animals = animals.Where(a => a.AnimalAdoptionAgency.AdoptionAgencyName.ToLower().Contains(AdoptionAgencyName.ToLower()));
-            return View(animals.ToList());
+            ViewBag.Animals = animals.ToList();
+            ViewBag.AdoptionAgencies = db.AdoptionAgencies.ToList();
+            return View();
         }
 
-        // GET: Animals/Details/5
-        public ActionResult Details(int? id)
+        // GET: Animals/AnimalDetails/5
+        public ActionResult AnimalDetails(int? id)
         {
             if (id == null)
             {
@@ -56,19 +60,36 @@ namespace AdoptMe.Controllers
             return View(animalModel);
         }
 
-        // GET: Animals/Create
-        public ActionResult Create()
+        // GET: Animals/AdoptionAgencyDetails/5
+        public ActionResult AdoptionAgencyDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdoptionAgencyModel adoptionAgencyModel = db.AdoptionAgencies.Find(id);
+            if (adoptionAgencyModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adoptionAgencyModel);
+        }
+
+        // GET: Animals/CreateAnimal
+        public ActionResult CreateAnimal()
         {
             return View();
         }
 
-        // POST: Animals/Create
+        // POST: Animals/CreateAnimal
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnimalID,AnimalType,AnimalBreed,AnimalColor,AnimalAge")] AnimalModel animalModel)
+        public ActionResult CreateAnimal([Bind(Include = "AnimalID,AnimalName,AnimalType,AnimalBreed,AnimalColor,AnimalAge,AnimalAgencyName")] AnimalModel animalModel)
         {
+            if (!String.IsNullOrEmpty(animalModel.AnimalAgencyName))
+            animalModel.AnimalAdoptionAgency = db.AdoptionAgencies.FirstOrDefault(agency => agency.AdoptionAgencyName.Equals(animalModel.AnimalAgencyName));
             if (ModelState.IsValid)
             {
                 db.Animals.Add(animalModel);
@@ -79,8 +100,31 @@ namespace AdoptMe.Controllers
             return View(animalModel);
         }
 
-        // GET: Animals/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Animals/CreateAdoptionAgency
+        public ActionResult CreateAdoptionAgency()
+        {
+            return View();
+        }
+
+        // POST: Animals/CreateAdoptionAgency
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAdoptionAgency([Bind(Include = "AdoptionAgencyID,AdoptionAgencyName,AdoptionAgencyLocationLat,AdoptionAgencyLocationLng")] AdoptionAgencyModel adoptionAgencyModel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.AdoptionAgencies.Add(adoptionAgencyModel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(adoptionAgencyModel);
+        }
+
+        // GET: Animals/EditAnimal/5
+        public ActionResult EditAnimal(int? id)
         {
             if (id == null)
             {
@@ -94,12 +138,12 @@ namespace AdoptMe.Controllers
             return View(animalModel);
         }
 
-        // POST: Animals/Edit/5
+        // POST: Animals/EditAnimal/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AnimalID,AnimalType,AnimalBreed,AnimalColor,AnimalAge")] AnimalModel animalModel)
+        public ActionResult EditAnimal([Bind(Include = "AnimalID,AnimalType,AnimalBreed,AnimalColor,AnimalAge")] AnimalModel animalModel)
         {
             if (ModelState.IsValid)
             {
@@ -110,8 +154,39 @@ namespace AdoptMe.Controllers
             return View(animalModel);
         }
 
-        // GET: Animals/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Animals/EditAdoptionAgency/5
+        public ActionResult EditAdoptionAgency(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdoptionAgencyModel adoptionAgencyModel = db.AdoptionAgencies.Find(id);
+            if (adoptionAgencyModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adoptionAgencyModel);
+        }
+
+        // POST: Animals/EditAdoptionAgency/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAdoptionAgency([Bind(Include = "AdoptionAgencyID,AdoptionAgencyName,AdoptionAgencyLocationLat,AdoptionAgencyLocationLng")] AdoptionAgencyModel adoptionAgencyModel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adoptionAgencyModel).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(adoptionAgencyModel);
+        }
+
+        // GET: Animals/DeleteAnimal/5
+        public ActionResult DeleteAnimal(int? id)
         {
             if (id == null)
             {
@@ -125,13 +200,39 @@ namespace AdoptMe.Controllers
             return View(animalModel);
         }
 
-        // POST: Animals/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Animals/DeleteAnimal/5
+        [HttpPost, ActionName("DeleteAnimal")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             AnimalModel animalModel = db.Animals.Find(id);
             db.Animals.Remove(animalModel);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        // GET: Animals/DeleteAdoptionAgency/5
+        public ActionResult DeleteAdoptionAgency(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdoptionAgencyModel adoptionAgencyModel = db.AdoptionAgencies.Find(id);
+            if (adoptionAgencyModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adoptionAgencyModel);
+        }
+
+        // POST: Animals/DeleteAdoptionAgency/5
+        [HttpPost, ActionName("DeleteAdoptionAgency")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteAgencyConfirmed(int id)
+        {
+            AdoptionAgencyModel adoptionAgencyModel = db.AdoptionAgencies.Find(id);
+            db.AdoptionAgencies.Remove(adoptionAgencyModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AdoptMe.Models.AdoptionAgencyModel>
+
+
+<section id="animals-admin-section">
+    <p>
+        @Html.ActionLink("Create New Adoption-Agency", "CreateAdoptionAgency")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdoptionAgencyName)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdoptionAgencyName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = item.AdoptionAgencyID }) |
+                    @Html.ActionLink("Details", "AdoptionAgencyDetails", new { id = item.AdoptionAgencyID }) |
+                    @Html.ActionLink("Delete", "DeleteAdoptionAgency", new { id = item.AdoptionAgencyID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>

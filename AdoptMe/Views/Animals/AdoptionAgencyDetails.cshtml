@@ -19,7 +19,7 @@
             @Html.DisplayFor(model => model.AdoptionAgencyName)
         </dd>
 
-        <dt>
+        <!--<dt>
             @Html.DisplayNameFor(model => model.AdoptionAgencyLocationLat)
         </dt>
 
@@ -33,11 +33,19 @@
 
         <dd>
             @Html.DisplayFor(model => model.AdoptionAgencyLocationLng)
-        </dd>
+        </dd>-->
 
     </dl>
 </div>
+<div id="map" style="clear:both; height:400px; width:500px;"></div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AdoptionAgencyID }) |
+    @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = Model.AdoptionAgencyID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<script>
+    function setMap(){
+        initMap("@Html.DisplayFor(model => model.AdoptionAgencyLocationLat)", "@Html.DisplayFor(model => model.AdoptionAgencyLocationLng)");
+    }
+</script>
+@Scripts.Render("~/Scripts/load-map.js")
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3-A9m2-bK6oetw4cCJaB0aNPDa4MTaME&callback=setMap"></script>

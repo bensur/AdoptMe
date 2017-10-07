@@ -22,14 +22,12 @@ namespace AdoptMe.Controllers
             return View();
         }
 
-        // POST: Animals/SearchAnimal
+        // POST: Animals/SearchAnimals
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Search(int AnimalID, string AnimalName, string AnimalType, string AnimalBreed, string AnimalColor, string AdoptionAgencyName)
+        public PartialViewResult SearchAnimals(string AnimalName, string AnimalType, string AnimalBreed, string AnimalColor, string AdoptionAgencyName)
         {
             IQueryable<AnimalModel> animals = db.Animals;
-            if (AnimalID != -1)
-                animals = animals.Where(a => a.AnimalID == AnimalID);
             if (!String.IsNullOrEmpty(AnimalName))
                 animals = animals.Where(a => a.AnimalName.ToLower().Contains(AnimalName.ToLower()));
             if (!String.IsNullOrEmpty(AnimalType))
@@ -41,8 +39,19 @@ namespace AdoptMe.Controllers
             if (!String.IsNullOrEmpty(AdoptionAgencyName))
                 animals = animals.Where(a => a.AnimalAdoptionAgency.AdoptionAgencyName.ToLower().Contains(AdoptionAgencyName.ToLower()));
             ViewBag.Animals = animals.ToList();
-            ViewBag.AdoptionAgencies = db.AdoptionAgencies.ToList();
-            return View();
+            return PartialView();
+        }
+
+        // POST: Animals/SearchAdoptionAgencies
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public PartialViewResult SearchAdoptionAgencies(string AdoptionAgencyName)
+        {
+            IQueryable<AdoptionAgencyModel> adoptionAgenceis = db.AdoptionAgencies;
+            if (!String.IsNullOrEmpty(AdoptionAgencyName))
+                adoptionAgenceis = adoptionAgenceis.Where(a => a.AdoptionAgencyName.ToLower().Contains(AdoptionAgencyName.ToLower()));
+            ViewBag.AdoptionAgencies = adoptionAgenceis.ToList();
+            return PartialView();
         }
 
         // GET: Animals/AnimalDetails/5

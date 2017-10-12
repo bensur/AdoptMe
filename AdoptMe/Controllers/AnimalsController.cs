@@ -246,6 +246,18 @@ namespace AdoptMe.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET Anumals/AnimalsStatistics
+        public ActionResult AnimalsStatistics()
+        {
+            return View();
+        }
+
+        // GET: Animals/GetAnimalStatistics
+        public JsonResult GetAnimalStatistics()
+        {
+            return Json(db.AdoptionAgencies.GroupJoin(db.Animals, adoptionAgency => adoptionAgency, animal => animal.AnimalAdoptionAgency, (adoptionAgency, animalsCollection) => new { label = adoptionAgency.AdoptionAgencyName, count = animalsCollection.Count() }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

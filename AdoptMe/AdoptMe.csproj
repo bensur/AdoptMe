@@ -282,6 +282,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Statistics.css" />
+    <Content Include="Content\Weather.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -327,7 +328,13 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\search.js" />
+    <Content Include="Scripts\simpleWeather\gulpfile.js" />
+    <Content Include="Scripts\simpleWeather\index.html" />
+    <Content Include="Scripts\simpleWeather\jquery.simpleWeather.js" />
+    <Content Include="Scripts\simpleWeather\jquery.simpleWeather.min.js" />
+    <Content Include="Scripts\simpleWeather\MIT-LICENSE.txt" />
     <Content Include="Scripts\StatisticsGraph.js" />
+    <Content Include="Scripts\weather.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -378,6 +385,13 @@
     <Content Include="Views\Animals\SearchAdoptionAgencies.cshtml" />
     <Content Include="Views\Animals\AnimalsStatistics.cshtml" />
     <Content Include="Views\MachineLearning\Index.cshtml" />
+    <Content Include="Scripts\simpleWeather\.jshintrc" />
+    <Content Include="Scripts\simpleWeather\bower.json" />
+    <Content Include="Scripts\simpleWeather\CHANGELOG.md" />
+    <Content Include="Scripts\simpleWeather\component.json" />
+    <Content Include="Scripts\simpleWeather\package.json" />
+    <Content Include="Scripts\simpleWeather\README.md" />
+    <Content Include="Scripts\simpleWeather\simpleweather.jquery.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

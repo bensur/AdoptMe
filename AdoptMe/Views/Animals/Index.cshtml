@@ -1,9 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Admin Screen";
+    ViewBag.Title = "Adoption Screen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Adoption Screen</h2>
+<section id="Animals-Search">
+    <form id="Animals-Search-Form" action="/Animals/SearchAnimals" method="post">
+        @Html.AntiForgeryToken()
+        <p>Animal Name</p>
+        <input id="search-animal-name" type="text" autocomplete="on" name="AnimalName" placeholder="Rocky" />
+        <p>Animal Type</p>
+        <input id="search-animal-type" type="text" autocomplete="on" name="AnimalType" placeholder="Dog" />
+        <p>Animal Breed</p>
+        <input id="search-animal-breed" type="text" autocomplete="on" name="AnimalBreed" placeholder="Labrador" />
+        <p>Animal Color</p>
+        <input id="search-animal-color" type="text" autocomplete="on" name="AnimalColor" placeholder="White" />
+        <p>Animal Adoption Agency</p>
+        <input id="search-animal-adoption-agency" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" />
+        <input type="submit" value="Search">
+    </form>
+</section>
+<section id="Animals-Section">
+    @Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals)
+</section>
+<section id="Adoption-Agencies-Search">
+    <form id="Adoption-Agencies-Search-Form" action="/Animals/SearchAdoptionAgencies" method="post">
+        @Html.AntiForgeryToken()
+        <p>Adoption Agency Name</p>
+        <input id="search-adoption-agency-name" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" />
+        <input type="submit" value="Search">
+    </form>
+</section>
+<section id="Adoption-Agencies-Section">
+    @Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)
+</section>
+@Scripts.Render("~/Scripts/search.js")
 
-@Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals)
-@Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)
+@Html.ActionLink("Show Statistics", "AnimalsStatistics", "Animals")

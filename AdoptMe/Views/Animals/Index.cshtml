@@ -35,3 +35,5 @@
     @Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)
 </section>
 @Scripts.Render("~/Scripts/search.js")
+
+@Html.ActionLink("Show Statistics", "AnimalsStatistics", "Animals")

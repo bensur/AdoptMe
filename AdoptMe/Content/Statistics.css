@@ -1,0 +1,44 @@
+﻿#chart {
+        height: 360px;
+        margin: 0 auto;
+        position: relative;
+        width: 360px;
+    }
+
+    .tooltip {
+        background: #eee;
+        box-shadow: 0 0 5px #999999;
+        opacity: 0.95;
+        color: #333;
+        display: none;
+        font-size: 10px;
+        left: 130px;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        top: 95px;
+        width: 130px;
+        z-index: 10;
+    }
+
+    .tooltip .label {
+        color: darkgrey;
+        font-size: 12px;
+    }
+    .tooltip .legend {
+        font-size: 12px;
+    }
+
+    rect {
+        cursor: pointer;
+        stroke-width: 2;
+    }
+
+        rect.disabled {
+            fill: transparent !important;
+        }
+
+    h1 {
+        font-size: 14px;
+        text-align: center;
+    }

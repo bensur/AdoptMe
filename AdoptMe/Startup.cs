@@ -9,6 +9,21 @@ namespace AdoptMe
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
+        //public void ConfigureServices()
+        //{
+        //    services.AddIdentity<ApplicationUser, IdentityRole>()
+        //    .AddEntityFrameworkStores<ApplicationDbContext>()
+        //    .AddDefaultTokenProviders();
+
+        //        services.AddAuthentication().AddGoogle(googleOptions =>
+        //        {
+        //            googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+        //            googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+        //        });
+
+        //}
+
     }
 }

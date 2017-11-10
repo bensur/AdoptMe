@@ -16,6 +16,19 @@
     <header>
         <h1>AdoptMe - The place to find your new best friend!</h1>
     </header>
+	 <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=363618644062122';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your save button code -->
+      <div class="fb-save" 
+        data-uri="http://www.your-domain.com/your-page.html">
+      </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -56,6 +69,7 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - AdoptMe</p>
+			<div class="fb-page" data-href="https://www.facebook.com/AdoptMe-1157166587749245/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/AdoptMe-1157166587749245/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/AdoptMe-1157166587749245/">AdoptMe</a></blockquote></div>
         </footer>
     </div>
 </body>

@@ -8,7 +8,7 @@
         data: $('#helper-form').serialize(),
         success: function (data) {
             console.log('Submission was successful.');
-            $('#helper-result-header').html(data);
+            $('#helper-result-header').html("You should get a " + data);
             console.log(data);
         },
         error: function (data) {

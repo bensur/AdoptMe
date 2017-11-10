@@ -309,6 +309,8 @@
     <Content Include="Scripts\ai.1.0.12-build04187.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\helper-form.js" />
+    <Content Include="Scripts\helper-salary-range-bar.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />

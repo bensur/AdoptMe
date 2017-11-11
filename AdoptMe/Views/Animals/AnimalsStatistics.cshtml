@@ -8,8 +8,14 @@
 <h2>AnimalsStatistics</h2>
 
 <section id="statistics">
-    <h3>Adoption Agencies Stats</h3>
-    <div id="chart"></div>
+    <section id="agencies-stats-section">
+        <h3>Adoption Agencies Stats</h3>
+        <div id="pie-chart"></div>
+    </section>
+    <section id="animals-stats-section">
+        <h3>Animals Stats</h3>
+        <div id="bar-chart"></div>
+    </section>
     @Scripts.Render("~/Scripts/d3/d3.min.js")
     @Scripts.Render("~/Scripts/StatisticsGraph.js")
 </section>

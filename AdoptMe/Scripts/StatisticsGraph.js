@@ -10,7 +10,7 @@
 
     var color = d3.scaleOrdinal(d3.schemeCategory20b);
 
-    var svg = d3.select('#chart')
+    var svg = d3.select('#pie-chart')
       .append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -39,7 +39,7 @@
     tooltip.append('div')
       .attr('class', 'percent');
 
-    d3.request("/Animals/GetAnimalStatistics").mimeType("application/json").response(function (xhr) {
+    d3.request("/Animals/GetAgenciesStatistics").mimeType("application/json").response(function (xhr) {
         return JSON.parse(xhr.responseText)
     }).get(function (dataset) {
         dataset.forEach(function (d) {
@@ -132,6 +132,61 @@
           .attr('y', legendRectSize - legendSpacing)
           .text(function (d) { return d; });
 
+    });
+
+})(window.d3);
+(function (d3) {
+    'use strict';
+    var width = 360;
+    var height = 360;
+    var margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    width = width - margin.left - margin.right;
+    height = height - margin.top - margin.bottom;
+
+    var svg = d3.select('#pie-chart')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height);
+      
+
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
+    var g = svg.append('g').attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.request("/Animals/GetAnimalsStatistics").mimeType("application/json").response(function (xhr) {
+        return JSON.parse(xhr.responseText)
+    }).get(function (data) {
+        data.forEach(function (d) {
+            d.frequency = +d.frequency;
+            return d;
+        })
+        x.domain(data.map(function (d) { return d.type; }));
+        y.domain([0, d3.max(data, function (d) { return d.frequency; })]);
+
+        g.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        g.append("g")
+            .attr("class", "axis axis--y")
+            .call(d3.axisLeft(y).ticks(10))
+          .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("text-anchor", "end")
+            .text("Frequency");
+
+        g.selectAll(".bar")
+          .data(data)
+          .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function (d) { return x(d.type); })
+            .attr("y", function (d) { return y(d.frequency); })
+            .attr("width", x.bandwidth())
+            .attr("height", function (d) { return height - y(d.frequency); });
+        
     });
 
 })(window.d3);

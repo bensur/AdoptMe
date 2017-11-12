@@ -3,31 +3,44 @@
     ViewBag.Title = "Helper";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Descision Helper</h2>
-<section id="helper">
-    <form id="helper-form" action="/MachineLearning/Decide" method="post">
-        @Html.AntiForgeryToken()
-        <p>Gender</p>
-        <input id="helper-gender" type="radio" name="gender" value="Male" /><label>Male</label>
-        <input id="helper-gender" type="radio" name="gender" value="Female" /><label>Female</label>
-        <p>Age</p>
-        <input id="helper-age" type="number" autocomplete="on" name="age" placeholder="26" />
-        <p>Location</p>
-        <select name="location">
-            <option value="Merkaz">Merkaz</option>
-            <option value="Darom">Darom</option>
-            <option value="Tzafon">Tzafon</option>
-        </select>
-        <p>Salary</p>
-        <input id="helper-salary" type="range" name="salary" min="0" max="100000"><label id="helper-salary-value"></label>
-        <input type="submit" value="Help Me!">
-        <input type="reset">
-    </form>
+<section class="outer-section">
+    <h2>Descision Helper</h2>
 </section>
-<section id="helper-results-section">
-    <h3>And the results are:</h3>
-    <h4 id="helper-result-header"></h4>
+<section class="outer-section">
+    <section id="helper">
+        <form id="helper-form" action="/MachineLearning/Decide" method="post">
+            @Html.AntiForgeryToken()
+            <div class="md-form">
+                <label class="help-block">Gender</label>
+                <label class="radio-inline"><input id="helper-gender" type="radio" name="gender" value="Male" checked />Male</label>
+                <label class="radio-inline"><input id="helper-gender" type="radio" name="gender" value="Female" />Female</label>
+            </div>
+            <div class="md-form">
+                <label for="age">Age</label>
+                <input id="helper-age" type="text" required pattern="[0-9]+" autocomplete="on" name="age" placeholder="26" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select name="location" class="form-control">
+                    <option value="Merkaz">Merkaz</option>
+                    <option value="Darom">Darom</option>
+                    <option value="Tzafon">Tzafon</option>
+                </select>
+            </div>
+            <div class="md-form">
+                <label for="salary">Salary</label>
+                <input id="helper-salary" type="range" name="salary" min="0" max="100000"><label id="helper-salary-value"></label>
+            </div>
+            <input type="submit" value="Help Me!" class="btn btn-info">
+            <input type="reset" class="btn btn-info">
+        </form>
+    </section>
+</section>
+<section class="outer-section">
+    <section id="helper-results-section">
+        <h3>And the results are:</h3>
+        <h4 id="helper-result-header"></h4>
+    </section>
 </section>
 
 @Scripts.Render("~/Scripts/helper-salary-range-bar.js")

@@ -4,56 +4,58 @@
     ViewBag.Title = "Animal Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="outer-section">
+    <h2>Animal Details</h2>
+</section>
 
-<h2>Animal Details</h2>
+<section class="outer-section">
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AnimalName)
+            </dt>
 
-<div>
-    <h4>AnimalModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AnimalName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AnimalType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalType)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AnimalType)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AnimalBreed)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalBreed)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AnimalBreed)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalBreed)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AnimalColor)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalColor)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AnimalColor)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalColor)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AnimalAge)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalAge)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AnimalAge)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalAge)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AnimalID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+</section>
+<section class="outer-section">
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>

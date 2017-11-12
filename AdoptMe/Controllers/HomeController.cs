@@ -15,7 +15,7 @@ namespace AdoptMe.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Get to know us better";
 
             return View();
         }

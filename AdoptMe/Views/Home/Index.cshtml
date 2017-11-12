@@ -2,13 +2,32 @@
     ViewBag.Title = "Home Page";
 }
 <div id="content">
-    <section id="about-us" class="multiple-columns">
-        <h3>About Us</h3>
-        First of all, we love animals! and if you're here then it means you love 'em too!
-        We want to help make the world a better place and find a warm and loving home for every cat, dog and any other pet out there, this is why we've started AdoptMe (And also we kinda have too because it's a course project)
+    <section class="outer-section">
+        <section id="about-us" class="multiple-columns">
+            <style>
+                .about {
+                    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+                    -moz-column-count: 3; /* Firefox */
+                    column-count: 3;
+                }
+            </style>
+            <h3>About Us</h3>
+            <div class="about">
+              First of all, we love animals! and if you're here then it means you love 'em too!
+                We want to help make the world a better place and find a warm and loving home for every cat, dog and any other pet out there, this is why we've started AdoptMe (And also we kinda have too because it's a course project)
+            </div>
+        </section>
     </section>
-    <section>
+    <section class="outer-section">
         <h3>How does this work</h3>
-        <p>write some text here!</p>
+        <p>Well, if you know exactly what kind of friend you want to have - go ahead and adopt!
+        For those of you guys who are still not sure, we created the Decision Helper feature: just answer a few simple question and we will find you the best animal for you!
+        Go ahead, give it a try!</p>
+    </section>
+    <section id="video" class="outer-section">
+        <video width="320" height="240" autoplay controls>
+            <source src="~/Content/Videos/home-clip.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </section>
 </div>

@@ -7,19 +7,56 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AdoptMe.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AdoptMe.Controllers
 {
     public class AnimalsController : Controller
     {
         private AnimalsContext db = new AnimalsContext();
-
         // GET: Animals
         public ActionResult Index()
         {
             ViewBag.AdoptionAgencies = db.AdoptionAgencies.ToList();
             ViewBag.Animals = db.Animals.ToList();
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.userName = user.Name;
+                ViewBag.isUserAdmin = false;
+                if (isAdminUser())
+                {
+                    ViewBag.isUserAdmin = true;
+                }
+                return View();
+            }
+            else
+            {
+                ViewBag.userName = "Not Logged IN";
+            }
             return View();
+
+        }
+
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext usersContext = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(usersContext));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if ((s.Count > 0) && (s[0].ToString().Equals("Admin")))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
 
         // POST: Animals/SearchAnimals
@@ -264,7 +301,8 @@ namespace AdoptMe.Controllers
             return Json(db.Animals.GroupBy(a => a.AnimalType).Select(g => new { type = g.Key, frequency = g.Count()}).ToList(), JsonRequestBehavior.AllowGet);
         }
 
-        protected override void Dispose(bool disposing)
+        
+    	protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

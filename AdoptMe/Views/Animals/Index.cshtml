@@ -21,7 +21,7 @@
     </form>
 </section>
 <section id="Animals-Section">
-    @Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals)
+    @Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals, new ViewDataDictionary { { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })
 </section>
 <section id="Adoption-Agencies-Search">
     <form id="Adoption-Agencies-Search-Form" action="/Animals/SearchAdoptionAgencies" method="post">
@@ -32,7 +32,7 @@
     </form>
 </section>
 <section id="Adoption-Agencies-Section">
-    @Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)
+    @Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies, new ViewDataDictionary{ { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })
 </section>
 @Scripts.Render("~/Scripts/search.js")
 

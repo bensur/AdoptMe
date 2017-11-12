@@ -2,38 +2,56 @@
     ViewBag.Title = "Adoption Screen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Adoption Screen</h2>
-<section id="Animals-Search">
+<section class="outer-section">
+    <h2>Adoption Screen</h2>
+</section>
+<section id="Animals-Search" class="outer-section">
     <form id="Animals-Search-Form" action="/Animals/SearchAnimals" method="post">
+        <p class="h3 text-center mb-4">Animals Search</p>
         @Html.AntiForgeryToken()
-        <p>Animal Name</p>
-        <input id="search-animal-name" type="text" autocomplete="on" name="AnimalName" placeholder="Rocky" />
-        <p>Animal Type</p>
-        <input id="search-animal-type" type="text" autocomplete="on" name="AnimalType" placeholder="Dog" />
-        <p>Animal Breed</p>
-        <input id="search-animal-breed" type="text" autocomplete="on" name="AnimalBreed" placeholder="Labrador" />
-        <p>Animal Color</p>
-        <input id="search-animal-color" type="text" autocomplete="on" name="AnimalColor" placeholder="White" />
-        <p>Animal Adoption Agency</p>
-        <input id="search-animal-adoption-agency" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" />
-        <input type="submit" value="Search">
+        <div class="md-form">
+            <label for="AnimalName">Animal Name</label>
+            <input id="search-animal-name" type="text" autocomplete="on" name="AnimalName" placeholder="Rocky" class="form-control" />
+        </div>
+        <div class="md-form">
+            <label for="AnimalType">Animal Type</label>
+            <input id="search-animal-type" type="text" autocomplete="on" name="AnimalType" placeholder="Dog" class="form-control" />
+        </div>
+        <div class="md-form">
+            <label for="AnimalBreed">Animal Breed</label>
+            <input id="search-animal-breed" type="text" autocomplete="on" name="AnimalBreed" placeholder="Labrador" class="form-control" />
+        </div>
+        <div class="md-form">
+            <label for="AnimalColor">Animal Color</label>
+            <input id="search-animal-color" type="text" autocomplete="on" name="AnimalColor" placeholder="White" class="form-control" />
+        </div>
+        <div class="md-form">
+            <label for="AdoptionAgencyName">Animal Adoption Agency</label>
+            <input id="search-animal-adoption-agency" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" class="form-control" />
+        </div>
+        <br />
+        <input type="submit" value="Search" class="btn btn-block btn-info">
     </form>
 </section>
-<section id="Animals-Section">
+<section id="Animals-Section" class="outer-section">
     @Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals, new ViewDataDictionary { { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })
 </section>
-<section id="Adoption-Agencies-Search">
+<section id="Adoption-Agencies-Search" class="outer-section">
     <form id="Adoption-Agencies-Search-Form" action="/Animals/SearchAdoptionAgencies" method="post">
+        <p class="h3 text-center mb-4">Adoption-Agencies Search</p>
         @Html.AntiForgeryToken()
-        <p>Adoption Agency Name</p>
-        <input id="search-adoption-agency-name" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" />
-        <input type="submit" value="Search">
+        <div class="md-form">
+            <label for="AdoptionAgencyName">Adoption Agency Name</label>
+            <input id="search-adoption-agency-name" type="text" autocomplete="on" name="AdoptionAgencyName" placeholder="WeLoveAnimals" class="form-control" />
+        </div>
+        <br />
+        <input type="submit" value="Search" class="btn btn-block btn-info">
     </form>
 </section>
-<section id="Adoption-Agencies-Section">
+<section id="Adoption-Agencies-Section" class="outer-section">
     @Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies, new ViewDataDictionary{ { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })
 </section>
 @Scripts.Render("~/Scripts/search.js")
-
-@Html.ActionLink("Show Statistics", "AnimalsStatistics", "Animals")
+<section class="outer-section">
+    <h3>@Html.ActionLink("Show Statistics", "AnimalsStatistics", "Animals")</h3>
+</section>

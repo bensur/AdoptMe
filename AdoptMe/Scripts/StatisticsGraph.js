@@ -143,7 +143,7 @@
     width = width - margin.left - margin.right;
     height = height - margin.top - margin.bottom;
 
-    var svg = d3.select('#pie-chart')
+    var svg = d3.select('#bar-chart')
       .append('svg')
       .attr('width', width)
       .attr('height', height);

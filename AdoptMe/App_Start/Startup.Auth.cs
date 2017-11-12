@@ -58,11 +58,11 @@ namespace AdoptMe
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1016212020353-ek2giia3akmltpfsnt0qhli7hpu7j1c2.apps.googleusercontent.com",
+                ClientSecret = "kEBY5M-y_lnqq4_llBdKrojk"
+            });
         }
     }
 }

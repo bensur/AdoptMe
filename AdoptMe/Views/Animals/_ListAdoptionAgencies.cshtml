@@ -2,9 +2,12 @@
 
 
 <section id="animals-admin-section">
-    <p>
-        @Html.ActionLink("Create New Adoption-Agency", "CreateAdoptionAgency")
-    </p>
+    @if (ViewBag.isUserAdmin != null && ViewBag.isUserAdmin)
+    {
+        <p>
+            @Html.ActionLink("Create New Adoption-Agency", "CreateAdoptionAgency")
+        </p>
+    }
     <table class="table">
         <tr>
             <th>
@@ -19,9 +22,14 @@
                     @Html.DisplayFor(modelItem => item.AdoptionAgencyName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = item.AdoptionAgencyID }) |
-                    @Html.ActionLink("Details", "AdoptionAgencyDetails", new { id = item.AdoptionAgencyID }) |
-                    @Html.ActionLink("Delete", "DeleteAdoptionAgency", new { id = item.AdoptionAgencyID })
+                    @if (ViewBag.isUserAdmin != null && ViewBag.isUserAdmin)
+                    {
+                        @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = item.AdoptionAgencyID })
+                        @(" | ")
+                        @Html.ActionLink("Delete", "DeleteAdoptionAgency", new { id = item.AdoptionAgencyID })
+                        @(" |")
+                    }
+                        @Html.ActionLink("Details", "AdoptionAgencyDetails", new { id = item.AdoptionAgencyID })
                 </td>
             </tr>
         }

@@ -17,18 +17,19 @@
         <h1>AdoptMe - The place to find your new best friend!</h1>
     </header>
 	 <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=363618644062122';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-      <!-- Your save button code -->
-      <div class="fb-save" 
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=363618644062122';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Your save button code -->
+    <div class="fb-save" 
         data-uri="http://www.your-domain.com/your-page.html">
-      </div>
+    </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -37,18 +38,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("AdoptME", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Animals", "Index", "Animals")</li>
                     <li>@Html.ActionLink("Descision-Helper", "Index", "MachineLearning")</li>
-                    <!--<li>@Html.ActionLink("Home", "Index", "Home")</li>-->
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
-                <span class="nav navbar-nav navbar-right" style="font-size:30px;cursor:pointer;float:right" onclick="openNav()">&#9776;</span>
             </div>
         </div>
     </nav>
@@ -57,21 +56,44 @@
             @RenderBody()
         </div>
         <aside>
-            <section class="message-of-the-day">
-                <p>We love all kind of pets! Here is a picture to prove it!</p>
-                <img src="img/message-of-the-day.jpeg" />
+            <canvas id="myCanvas" width="400" height="100" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+            <script>
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+                // Create gradient
+                var grd = ctx.createLinearGradient(0, 0, 400, 0);
+                grd.addColorStop(0, "purple");
+                grd.addColorStop(1, "white");
+
+                // Fill with gradient
+                ctx.fillStyle = grd;
+                ctx.fillRect(10, 10, 400, 80);
+                ctx.font = "30px Arial";
+                ctx.strokeText("Adopt now with AdoptMe!", 10, 50);
+            </script>  
+            <section id="message-of-the-day" class="framed">
+                <p>We love all kinds of pets! Here is a picture to prove it!</p>
+                <img src="~/Content/Pictures/message-of-the-day.jpg" alt="Message Of The Day!" style="width:150px;height:250px;" />
             </section>
-            <section class="suggestions">
+            <section id="suggestions" class="framed">
                 <p>@Html.ActionLink("Tell us", "Index", "MachineLearning") a little about yourself and we'll let you know what is the best pet for you!</p>
             </section>
             <section>
-                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1157740974358473%26id%3D1157166587749245&width=500" width="500" height="171" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1157740974358473%26id%3D1157166587749245&width=500" width="300" height="171" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
             </section>
         </aside>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - AdoptMe</p>
-			<div class="fb-page" data-href="https://www.facebook.com/AdoptMe-1157166587749245/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/AdoptMe-1157166587749245/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/AdoptMe-1157166587749245/">AdoptMe</a></blockquote></div>
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/AdoptMe-1157166587749245/"
+                 data-width="380"
+                 data-hide-cover="false"
+                 data-show-facepile="false"></div>      
+            
         </footer>
     </div>
 </body>

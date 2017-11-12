@@ -4,44 +4,21 @@
     ViewBag.Title = "Adoption-Agency Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Adoption-Agency Details</h2>
-<div id="weather"></div>
-<div>
-    <h4>Adoption Agency Details</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AdoptionAgencyName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdoptionAgencyName)
-        </dd>
-
-        <!--<dt>
-            @Html.DisplayNameFor(model => model.AdoptionAgencyLocationLat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdoptionAgencyLocationLat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdoptionAgencyLocationLng)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdoptionAgencyLocationLng)
-        </dd>-->
-
-    </dl>
-</div>
-<div id="map" style="clear:both; height:400px; width:500px;"></div>
-<p>
-    @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = Model.AdoptionAgencyID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<section class="outer-section">
+    <h2>@Html.DisplayFor(model => model.AdoptionAgencyName)</h2>
+</section>
+<section class="outer-section">
+    <div id="weather"></div>
+</section>
+<section class="outer-section">
+    <div id="map" style="clear:both; height:400px; width:500px;"></div>
+</section>
+<section class="outer-section">
+    <p>
+        @Html.ActionLink("Edit", "EditAdoptionAgency", new { id = Model.AdoptionAgencyID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>
 <script>
     function setMap(){
         initMap("@Html.DisplayFor(model => model.AdoptionAgencyLocationLat)", "@Html.DisplayFor(model => model.AdoptionAgencyLocationLng)");

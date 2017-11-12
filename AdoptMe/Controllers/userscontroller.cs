@@ -19,7 +19,6 @@ namespace AdoptMe.Controllers
             {
                 var user = User.Identity;
                 ViewBag.Name = user.Name;
-
                 ViewBag.displayMenu = "No";
 
                 if (isAdminUser())
@@ -43,7 +42,7 @@ namespace AdoptMe.Controllers
                 Models.ApplicationDbContext context = new Models.ApplicationDbContext();
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
-                if (s[0].ToString() == "Admin")
+                if ((s.Count > 0) && (s[0].ToString() == "Admin"))
                 {
                     return true;
                 }

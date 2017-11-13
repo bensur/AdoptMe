@@ -1,1 +1,1 @@
-﻿@Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies)
+﻿@Html.Partial("_ListAdoptionAgencies", (IEnumerable<AdoptMe.Models.AdoptionAgencyModel>)ViewBag.AdoptionAgencies, new ViewDataDictionary { { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })

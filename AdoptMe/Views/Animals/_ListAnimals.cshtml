@@ -22,7 +22,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.AnimalAge)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalAgencyName)
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -39,6 +44,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AnimalAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnimalAgencyName)
                 </td>
                 <td>
                     @if (ViewBag.isUserAdmin != null && ViewBag.isUserAdmin)

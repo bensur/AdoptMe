@@ -20,23 +20,18 @@ namespace AdoptMe.Controllers
         {
             ViewBag.AdoptionAgencies = db.AdoptionAgencies.ToList();
             ViewBag.Animals = db.Animals.ToList();
+            ViewBag.isUserAdmin = false;
+            ViewBag.userName = "Not Logged IN";
             if (User.Identity.IsAuthenticated)
             {
                 var user = User.Identity;
                 ViewBag.userName = user.Name;
-                ViewBag.isUserAdmin = false;
                 if (isAdminUser())
                 {
                     ViewBag.isUserAdmin = true;
                 }
-                return View();
-            }
-            else
-            {
-                ViewBag.userName = "Not Logged IN";
             }
             return View();
-
         }
 
         public Boolean isAdminUser()
@@ -76,6 +71,17 @@ namespace AdoptMe.Controllers
             if (!String.IsNullOrEmpty(AdoptionAgencyName))
                 animals = animals.Where(a => a.AnimalAdoptionAgency.AdoptionAgencyName.ToLower().Contains(AdoptionAgencyName.ToLower()));
             ViewBag.Animals = animals.ToList();
+            ViewBag.isUserAdmin = false;
+            ViewBag.userName = "Not Logged IN";
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.userName = user.Name;
+                if (isAdminUser())
+                {
+                    ViewBag.isUserAdmin = true;
+                }
+            }
             return PartialView();
         }
 
@@ -88,6 +94,17 @@ namespace AdoptMe.Controllers
             if (!String.IsNullOrEmpty(AdoptionAgencyName))
                 adoptionAgenceis = adoptionAgenceis.Where(a => a.AdoptionAgencyName.ToLower().Contains(AdoptionAgencyName.ToLower()));
             ViewBag.AdoptionAgencies = adoptionAgenceis.ToList();
+            ViewBag.isUserAdmin = false;
+            ViewBag.userName = "Not Logged IN";
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ViewBag.userName = user.Name;
+                if (isAdminUser())
+                {
+                    ViewBag.isUserAdmin = true;
+                }
+            }
             return PartialView();
         }
 

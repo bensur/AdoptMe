@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace AdoptMe.Models
     {
         [Key]
         public int AdoptionAgencyID { get; set; }
+        [DisplayName("Adoption Agency Name")]
         public string AdoptionAgencyName { get; set; }
         public float AdoptionAgencyLocationLat { get; set; }
         public float AdoptionAgencyLocationLng { get; set; }

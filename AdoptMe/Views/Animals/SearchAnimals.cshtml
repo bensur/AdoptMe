@@ -1,1 +1,1 @@
-﻿@Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals)
+﻿@Html.Partial("_ListAnimals", (IEnumerable<AdoptMe.Models.AnimalModel>)ViewBag.Animals, new ViewDataDictionary { { "isUserAdmin", ViewBag.isUserAdmin }, { "userName", ViewBag.userName } })
